@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ISD Index</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background:
+                linear-gradient(
+                    rgba(15, 23, 42, 0.85),
+                    rgba(15, 23, 42, 0.85)
+                ),
+                url("https://infotechnology.fhwa.dot.gov/wp-content/uploads/2021/04/image-108.png");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 540px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            border-left: 6px solid #6366f1;
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 28px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        input {
+            padding: 13px 14px;
+            border-radius: 10px;
+            border: 1px solid #cbd5f5;
+            font-size: 14px;
+            background: #f8fafc;
+            transition: all 0.25s ease;
+        }
+
+        input::placeholder {
+            color: #64748b;
+        }
+
+        input:focus {
+            outline: none;
+            background: #ffffff;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        button {
+            margin-top: 14px;
+            padding: 15px;
+            background: linear-gradient(135deg, #6366f1, #3b82f6);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(99, 102, 241, 0.45);
+        }
+
+        .result {
+            margin-top: 28px;
+            padding: 18px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            color: #1e293b;
+            border: 1px solid #c7d2fe;
+        }
+
+        @media (max-width: 480px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: span 1;
+            }
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>TSD Index</h2>
+    <div class="subtitle">Lets get the estimate of TSD Index</div>
+
+    <form method="POST">
+
+        <div class="input-group">
+            <label>Road Type</label>
+            <select name="input1" required>
+                <option value="" disabled selected>Choose Road Type</option>
+                <option value="1">Road A</option>
+                <option value="2">Road B</option>
+                <option value="3">Road C</option>
+                <option value="4">Road D</option>
+            </select>
+        </div>
+
+
+        <div class="input-group">
+            <label>Area  [sqr.mm]</label>
+            <input type="number" step="any" name="input2" required>
+        </div>
+
+        <div class="input-group">
+            <label>Max Deflection  [µm]</label>
+            <input type="number" step="any" name="input3" required>
+        </div>
+
+        <div class="input-group">
+            <label>Standard Deviation</label>
+            <input type="number" step="any" name="input4" required>
+        </div>
+
+        <div class="input-group">
+            <label>SCI200 [µm]</label>
+            <input type="number" step="any" name="input5" required>
+        </div>
+
+        <div class="input-group">
+            <label>SCI300 [µm]</label>
+            <input type="number" step="any" name="input6" required>
+        </div>
+
+        <div class="input-group">
+            <label>SCISUB [µm]</label>
+            <input type="number" step="any" name="input7" required>
+        </div>
+
+        <div class="input-group">
+            <label>Temp Road [°C]</label>
+            <input type="number" step="any" name="input8" required>
+        </div>
+
+        <button type="submit" class="full-width"> Get The Value</button>
+    </form>
+
+
+    {% if prediction is not none %}
+    <div class="result">
+        🔍 TSD Index: <strong>{{ prediction }}</strong>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
