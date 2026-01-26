@@ -1,4 +1,5 @@
 flask
-numpy
+numpy<2.4
 scikit-learn
+shap
 gunicorn
