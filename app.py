@@ -5,7 +5,6 @@ import numpy as np
 app = Flask(__name__, template_folder='template')
 
 
-
 model = pickle.load(open('TSDgbr.pkl', 'rb'))
 
 @app.route("/", methods=["GET", "POST"])
